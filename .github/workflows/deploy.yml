@@ -19,8 +19,6 @@ jobs:
   build-verification:
     name: Build Verification
     runs-on: ubuntu-latest
-    # Pull Request 이벤트일 때만 실행
-    if: github.event_name == 'pull_request'
     steps:
       # 소스 코드 체크아웃
       - name: Checkout
