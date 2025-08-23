@@ -1,85 +1,123 @@
+# Deploy (배포) 워크플로우
+# 애플리케이션을 프로덕션 환경에 배포하고 성능을 모니터링합니다.
 name: Deploy
 
+# 워크플로우 트리거 조건 설정
 on:
+  # main 브랜치에 코드가 푸시될 때 실행 (프로덕션 배포)
   push:
     branches: [main]
+  # GitHub UI에서 수동으로 워크플로우 실행 가능
   workflow_dispatch:
 
+# 워크플로우 작업 정의
 jobs:
+  # 1. 프리뷰 배포 작업 (Pull Request용)
   deploy-preview:
     name: Deploy Preview
     runs-on: ubuntu-latest
+    # Pull Request 이벤트일 때만 실행
     if: github.event_name == 'pull_request'
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
+      # pnpm 패키지 매니저 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
+          # package.json의 packageManager 필드와 일치하는 버전 사용
           version: 9.0.0
 
+      # Node.js 런타임 환경 설정
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          # Node.js 18 버전 사용
           node-version: 18
+          # pnpm 의존성 캐싱 활성화
           cache: 'pnpm'
 
+      # 프로젝트 의존성 설치
       - name: Install dependencies
+        # frozen-lockfile: pnpm-lock.yaml과 정확히 일치하는 버전 설치
         run: pnpm install --frozen-lockfile
 
+      # Docusaurus 애플리케이션 빌드
       - name: Build Docusaurus
+        # 특정 패키지만 빌드하여 빌드 시간 단축
         run: pnpm build --filter=docusaurus
 
+  # 2. Lighthouse 성능 감사 작업
   lighthouse-audit:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
+    # 프리뷰 배포가 완료된 후 실행
     needs: [deploy-preview]
+    # Pull Request 이벤트일 때만 실행
     if: github.event_name == 'pull_request'
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 배포 완료까지 대기
       - name: Wait for deployment
+        # 배포 서버가 준비될 시간을 확보 (60초 대기)
         run: sleep 60
 
+      # Lighthouse CI를 사용한 성능 감사
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
+          # Lighthouse 설정 파일 경로
           configPath: './.lighthouserc.json'
+          # 감사 결과 아티팩트로 업로드
           uploadArtifacts: true
+          # 임시 공개 저장소 사용 (결과를 공유 가능한 URL로 제공)
           temporaryPublicStorage: true
 
+  # 3. 성능 테스트 작업
   performance-tests:
     name: Performance Tests
     runs-on: ubuntu-latest
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Node.js 런타임 환경 설정
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # pnpm 패키지 매니저 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.0.0
 
+      # 프로젝트 의존성 설치
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Docusaurus 애플리케이션 빌드
       - name: Build Docusaurus
         run: pnpm build --filter=docusaurus
 
+      # 번들 크기 분석 및 보고
       - name: Analyze bundle sizes
         run: |
+          # GitHub Actions 단계 요약에 번들 분석 결과 추가
           echo "## Bundle Analysis 📦" >> $GITHUB_STEP_SUMMARY
           echo "| App | Size |" >> $GITHUB_STEP_SUMMARY
           echo "|-----|------|" >> $GITHUB_STEP_SUMMARY
           
+          # Docusaurus 빌드 디렉토리가 존재하는 경우 크기 측정
           if [ -d "apps/docusaurus/build" ]; then
+            # 디스크 사용량을 사람이 읽기 쉬운 형태로 표시
             size=$(du -sh apps/docusaurus/build | cut -f1)
             echo "| docusaurus | $size |" >> $GITHUB_STEP_SUMMARY
           fi

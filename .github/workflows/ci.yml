@@ -1,149 +1,208 @@
+# CI (Continuous Integration) 워크플로우
+# 코드 품질 검증, 테스트, 빌드 및 보안 검사를 자동화합니다.
 name: CI
 
+# 워크플로우 트리거 조건 설정
 on:
+  # main 또는 develop 브랜치에 코드가 푸시될 때 실행
   push:
     branches: [main, develop]
+  # main 또는 develop 브랜치로 Pull Request가 생성될 때 실행
   pull_request:
     branches: [main, develop]
 
+# 동시성 제어: 같은 브랜치에서 중복 실행을 방지하고 진행 중인 작업을 취소
 concurrency:
+  # 그룹 식별자: 워크플로우 이름과 참조(브랜치/PR)로 구성
   group: ${{ github.workflow }}-${{ github.ref }}
+  # 새로운 실행이 시작될 때 기존 실행을 취소
   cancel-in-progress: true
 
+# 워크플로우 작업 정의
 jobs:
+  # 1. 코드 품질 검증 작업 (린트 및 타입 체크)
   lint-and-typecheck:
     name: Lint and Typecheck
+    # Ubuntu 최신 버전에서 실행
     runs-on: ubuntu-latest
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # 모든 히스토리를 가져옴 (Turborepo 캐싱을 위해 필요)
           fetch-depth: 0
 
+      # pnpm 패키지 매니저 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
+          # package.json의 packageManager 필드와 일치하는 버전 사용
           version: 9.0.0
 
+      # Node.js 런타임 환경 설정
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          # Node.js 18 버전 사용
           node-version: 18
+          # pnpm 의존성 캐싱 활성화
           cache: 'pnpm'
 
+      # 프로젝트 의존성 설치
       - name: Install dependencies
+        # frozen-lockfile: pnpm-lock.yaml과 정확히 일치하는 버전 설치
         run: pnpm install --frozen-lockfile
 
+      # ESLint를 사용한 코드 스타일 및 품질 검사
       - name: Lint
+        # 모든 패키지에 대해 린트 실행 (최대 경고 0개)
         run: pnpm lint
 
+      # TypeScript 타입 검사
       - name: Type check
+        # 컴파일 없이 타입 오류만 검사
         run: pnpm check-types
 
+  # 2. 단위 테스트 작업
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
+      # pnpm 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.0.0
 
+      # Node.js 설정
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
 
+      # 의존성 설치
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # 단위 테스트 실행
       - name: Run tests
+        # 현재는 @repo/ui 패키지만 테스트 (향후 확장 예정)
         run: pnpm test --filter=@repo/ui
 
+  # 3. 애플리케이션 빌드 작업
   build:
     name: Build Applications
     runs-on: ubuntu-latest
+    # 린트와 타입 체크가 성공한 후에만 실행
     needs: [lint-and-typecheck]
+    # 매트릭스 전략: 여러 앱을 병렬로 빌드
     strategy:
       matrix:
+        # 현재는 docusaurus만 빌드 (향후 web, docs 등 추가 가능)
         app: [docusaurus]
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
+      # pnpm 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.0.0
 
+      # Node.js 설정
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
 
+      # 의존성 설치
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # 특정 앱 빌드
       - name: Build ${{ matrix.app }}
+        # Turborepo 필터를 사용하여 특정 앱만 빌드
         run: pnpm build --filter=${{ matrix.app }}
 
+      # 빌드 아티팩트 업로드
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
+          # 앱별로 고유한 아티팩트 이름 생성
           name: build-${{ matrix.app }}
+          # 빌드 결과물 경로
           path: |
             apps/${{ matrix.app }}/build/
+          # 아티팩트 보관 기간 (7일)
           retention-days: 7
 
+  # 4. End-to-End 테스트 작업
   e2e-tests:
     name: E2E Tests
     runs-on: ubuntu-latest
+    # 빌드가 완료된 후에 실행
     needs: [build]
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
+      # pnpm 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.0.0
 
+      # Node.js 설정
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'pnpm'
 
+      # 의존성 설치
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # E2E 테스트 (현재는 스킵, 향후 Playwright 등으로 구현 예정)
       - name: Skip E2E tests for now
         run: echo "E2E tests skipped - will be implemented later"
 
+  # 5. 보안 검사 작업
   security-scan:
     name: Security Scan
     runs-on: ubuntu-latest
     steps:
+      # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Node.js 설정 (보안 스캔용)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # pnpm 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.0.0
 
+      # 의존성 설치
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # 보안 취약점 감사
       - name: Run security audit
+        # moderate 수준 이상의 취약점 검사, 경고가 있어도 계속 진행
         run: pnpm audit --audit-level moderate || echo "Security audit completed with warnings"
