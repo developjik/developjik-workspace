@@ -194,27 +194,33 @@ export const experiences: Experience[] = [
 export const interests: Interest[] = [
   {
     title: '🚀 최신 기술 탐구',
-    description: 'React, Next.js 등의 최신 기능과 트렌드를 빠르게 학습하고 적용합니다.'
+    description: 'React, Next.js 등의 최신 기능과 트렌드를 빠르게 학습하고 적용합니다.',
+    icon: '🚀'
   },
   {
     title: '🎨 사용자 경험',
-    description: '직관적이고 아름다운 사용자 인터페이스 설계에 관심이 많습니다.'
+    description: '직관적이고 아름다운 사용자 인터페이스 설계에 관심이 많습니다.',
+    icon: '🎨'
   },
   {
     title: '⚡ 성능 최적화',
-    description: '빠르고 효율적인 웹 애플리케이션을 만드는 것에 열정을 가지고 있습니다.'
+    description: '빠르고 효율적인 웹 애플리케이션을 만드는 것에 열정을 가지고 있습니다.',
+    icon: '⚡'
   },
   {
     title: '📝 지식 공유',
-    description: '배운 것을 문서화하고 다른 개발자들과 공유하는 것을 좋아합니다.'
+    description: '배운 것을 문서화하고 다른 개발자들과 공유하는 것을 좋아합니다.',
+    icon: '📝'
   },
   {
     title: '🛠️ 개발 도구',
-    description: '개발 생산성을 향상시키는 도구와 워크플로우를 연구합니다.'
+    description: '개발 생산성을 향상시키는 도구와 워크플로우를 연구합니다.',
+    icon: '🛠️'
   },
   {
     title: '🌱 지속적 학습',
-    description: '새로운 기술과 개념을 지속적으로 학습하고 성장하려 노력합니다.'
+    description: '새로운 기술과 개념을 지속적으로 학습하고 성장하려 노력합니다.',
+    icon: '🌱'
   }
 ];
 
