@@ -1,0 +1,239 @@
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: -2rem;
+  top: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+  z-index: 1;
+}
+
+.timelineIcon {
+  font-size: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timelineContent {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timelineContent:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.timelineContent::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 1rem;
+  border: 8px solid transparent;
+  border-right-color: white;
+}
+
+.timelineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.timelineTitle h3 {
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+  margin: 0 0 0.3rem 0 !important;
+}
+
+.timelineTitle h4 {
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+  color: #667eea !important;
+  margin: 0 !important;
+}
+
+.timelineMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.timelineType {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+}
+
+.timelinePeriod {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.timelineDescription {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.achievements {
+  margin-bottom: 1.5rem;
+}
+
+.achievementsTitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+.achievementsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievementItem {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.achievementItem::before {
+  content: '✨';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.8rem;
+}
+
+.achievementItem:last-child {
+  margin-bottom: 0;
+}
+
+.techStack {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.techStackTitle {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.techTag {
+  padding: 0.4rem 0.8rem;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.techTag:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline::before {
+    left: 0.75rem;
+  }
+
+  .timelineMarker {
+    left: -1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .timelineIcon {
+    font-size: 0.8rem;
+  }
+
+  .timelineContent {
+    padding: 1.5rem;
+  }
+
+  .timelineContent::before {
+    left: -12px;
+    border-width: 6px;
+  }
+
+  .timelineHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timelineMeta {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .timelineTitle h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .timelineTitle h4 {
+    font-size: 1rem !important;
+  }
+}

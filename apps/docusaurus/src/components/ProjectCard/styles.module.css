@@ -1,0 +1,233 @@
+.projectCard {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.projectImageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.05);
+}
+
+.statusOverlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.statusBadge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.statusCompleted {
+  background: rgba(34, 197, 94, 0.9);
+}
+
+.statusInProgress {
+  background: rgba(59, 130, 246, 0.9);
+}
+
+.statusPlanned {
+  background: rgba(168, 85, 247, 0.9);
+}
+
+.projectContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.projectHeader {
+  margin-bottom: 1rem;
+}
+
+.projectTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 0.5rem 0;
+}
+
+.projectPeriod {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.projectDescription {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.techBadge {
+  padding: 0.3rem 0.7rem;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.projectTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  font-size: 0.8rem;
+  color: #8b5cf6;
+  font-weight: 500;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.projectLink {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.projectLink:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.githubLink {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.githubLink:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.demoLink {
+  background: #667eea;
+  color: white;
+}
+
+.demoLink:hover {
+  background: #5a67d8;
+  color: white;
+}
+
+.docLink {
+  background: rgba(168, 85, 247, 0.1);
+  color: #8b5cf6;
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.docLink:hover {
+  background: rgba(168, 85, 247, 0.2);
+  color: #7c3aed;
+}
+
+.linkIcon {
+  font-size: 1rem;
+}
+
+.highlights {
+  margin-top: auto;
+}
+
+.highlightsTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 0.8rem 0;
+}
+
+.highlightsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.highlight {
+  position: relative;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.highlight::before {
+  content: '✨';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .projectCard {
+    margin-bottom: 2rem;
+  }
+
+  .projectContent {
+    padding: 1rem;
+  }
+
+  .projectLinks {
+    flex-direction: column;
+  }
+
+  .projectLink {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "common": {
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "success": "성공!",
+    "cancel": "취소",
+    "save": "저장",
+    "delete": "삭제",
+    "edit": "편집",
+    "create": "생성",
+    "update": "업데이트",
+    "search": "검색",
+    "clear": "지우기",
+    "close": "닫기",
+    "back": "뒤로",
+    "next": "다음",
+    "previous": "이전"
+  },
+  "navigation": {
+    "home": "홈",
+    "about": "소개",
+    "contact": "연락처",
+    "profile": "프로필",
+    "settings": "설정",
+    "logout": "로그아웃"
+  },
+  "auth": {
+    "login": "로그인",
+    "register": "회원가입",
+    "email": "이메일",
+    "password": "비밀번호",
+    "confirmPassword": "비밀번호 확인",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "rememberMe": "로그인 상태 유지",
+    "loginSuccess": "로그인에 성공했습니다!",
+    "loginError": "이메일 또는 비밀번호가 올바르지 않습니다",
+    "registerSuccess": "계정이 성공적으로 생성되었습니다!",
+    "registerError": "계정 생성에 실패했습니다"
+  },
+  "user": {
+    "profile": "프로필",
+    "name": "이름",
+    "avatar": "아바타",
+    "bio": "소개",
+    "joinedDate": "{{date}}에 가입",
+    "editProfile": "프로필 편집",
+    "changePassword": "비밀번호 변경"
+  },
+  "validation": {
+    "required": "이 필드는 필수입니다",
+    "email": "유효한 이메일 주소를 입력해주세요",
+    "minLength": "최소 {{min}}자 이상이어야 합니다",
+    "maxLength": "최대 {{max}}자까지 가능합니다",
+    "match": "비밀번호가 일치하지 않습니다"
+  }
+}

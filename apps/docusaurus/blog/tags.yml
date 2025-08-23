@@ -1,0 +1,34 @@
+react:
+  label: React
+  permalink: /react
+  description: React 관련 포스트
+
+nextjs:
+  label: Next.js
+  permalink: /nextjs
+  description: Next.js 관련 포스트
+
+typescript:
+  label: TypeScript
+  permalink: /typescript
+  description: TypeScript 관련 포스트
+
+turborepo:
+  label: Turborepo
+  permalink: /turborepo
+  description: Turborepo 관련 포스트
+
+learning:
+  label: 학습
+  permalink: /learning
+  description: 학습 과정 및 노하우
+
+project:
+  label: 프로젝트
+  permalink: /project
+  description: 프로젝트 경험 공유
+
+tutorial:
+  label: 튜토리얼
+  permalink: /tutorial
+  description: 튜토리얼 및 가이드
