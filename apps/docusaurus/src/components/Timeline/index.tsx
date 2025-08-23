@@ -35,7 +35,7 @@ const Timeline: React.FC<TimelineProps> = ({ experiences }) => {
 
   return (
     <div className={styles.timeline}>
-      {experiences.map((experience, index) => (
+      {experiences.map((experience) => (
         <div key={experience.id} className={styles.timelineItem}>
           <div className={styles.timelineMarker}>
             <div className={styles.timelineIcon}>

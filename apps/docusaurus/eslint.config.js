@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint no-undef: "off" */
 const { config } = require("@repo/eslint-config/react-internal");
 
 module.exports = [
@@ -7,6 +9,7 @@ module.exports = [
       ".docusaurus/**",
       "build/**",
       "node_modules/**",
+      "eslint.config.js",
     ],
   },
   {
