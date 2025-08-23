@@ -34,6 +34,7 @@ const updateUser = async (user: User): Promise<User> => {
 
 const deleteUser = async (id: string): Promise<void> => {
   await new Promise(resolve => setTimeout(resolve, 500));
+  console.log(`Deleting user with id: ${id}`);
 };
 
 // Hooks
