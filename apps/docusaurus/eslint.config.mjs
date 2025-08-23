@@ -1,15 +1,13 @@
-/* eslint-env node */
-/* eslint no-undef: "off" */
-const { config } = require("@repo/eslint-config/react-internal");
+import { config } from "@repo/eslint-config/react-internal";
 
-module.exports = [
+export default [
   ...config,
   {
     ignores: [
       ".docusaurus/**",
       "build/**",
       "node_modules/**",
-      "eslint.config.js",
+      "eslint.config.mjs",
     ],
   },
   {
