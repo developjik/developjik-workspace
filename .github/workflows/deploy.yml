@@ -7,14 +7,17 @@ on:
   # main 브랜치에 코드가 푸시될 때 실행 (프로덕션 배포)
   push:
     branches: [main]
+  # Pull Request가 생성되거나 업데이트될 때 실행 (프리뷰 배포)
+  pull_request:
+    branches: [main]
   # GitHub UI에서 수동으로 워크플로우 실행 가능
   workflow_dispatch:
 
 # 워크플로우 작업 정의
 jobs:
-  # 1. 프리뷰 배포 작업 (Pull Request용)
-  deploy-preview:
-    name: Deploy Preview
+  # 1. 빌드 검증 작업 (Pull Request용)
+  build-verification:
+    name: Build Verification
     runs-on: ubuntu-latest
     # Pull Request 이벤트일 때만 실행
     if: github.event_name == 'pull_request'
@@ -44,35 +47,55 @@ jobs:
         # frozen-lockfile: pnpm-lock.yaml과 정확히 일치하는 버전 설치
         run: pnpm install --frozen-lockfile
 
-      # Docusaurus 애플리케이션 빌드
+      # Docusaurus 애플리케이션 빌드 검증
       - name: Build Docusaurus
-        # 특정 패키지만 빌드하여 빌드 시간 단축
+        # Vercel 자동 배포 전에 빌드가 성공하는지 검증
         run: pnpm build --filter=docusaurus
 
-  # 2. Lighthouse 성능 감사 작업
+
+  # 2. Lighthouse 성능 감사 작업 (Vercel 자동 배포 기반)
   lighthouse-audit:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
-    # 프리뷰 배포가 완료된 후 실행
-    needs: [deploy-preview]
-    # Pull Request 이벤트일 때만 실행
-    if: github.event_name == 'pull_request'
+    # PR 또는 main 브랜치 푸시 시 실행 (Vercel이 자동 배포)
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     steps:
       # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 배포 완료까지 대기
-      - name: Wait for deployment
-        # 배포 서버가 준비될 시간을 확보 (60초 대기)
-        run: sleep 60
+      # Vercel 자동 배포 완료까지 대기
+      - name: Wait for Vercel deployment
+        # Vercel이 자동으로 배포를 완료할 시간 확보 (120초 대기)
+        run: sleep 120
+
+      # Vercel 프리뷰 URL 생성
+      - name: Generate Vercel preview URL
+        id: get-url
+        run: |
+          # 실제 배포 URL을 기반으로 프리뷰 URL 생성
+          # 프로덕션: https://developjik-workspace-docusaurus.vercel.app/
+          # 프리뷰: https://developjik-workspace-docusaurus-git-{branch}.vercel.app/
+          BRANCH_NAME=$(echo "${{ github.head_ref }}" | sed 's/[^a-zA-Z0-9-]/-/g' | tr '[:upper:]' '[:lower:]')
+          
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # PR일 때는 브랜치별 프리뷰 URL 사용
+            PREVIEW_URL="https://developjik-workspace-docusaurus-git-${BRANCH_NAME}.vercel.app"
+          else
+            # main 브랜치 푸시일 때는 프로덕션 URL 사용
+            PREVIEW_URL="https://developjik-workspace-docusaurus.vercel.app"
+          fi
+          
+          echo "url=${PREVIEW_URL}" >> $GITHUB_OUTPUT
+          echo "Generated URL: ${PREVIEW_URL}"
 
       # Lighthouse CI를 사용한 성능 감사
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v10
         with:
-          # Lighthouse 설정 파일 경로
-          configPath: './.lighthouserc.json'
+          # Vercel이 자동 배포한 URL에 대해 Lighthouse 실행
+          urls: |
+            ${{ steps.get-url.outputs.url }}
           # 감사 결과 아티팩트로 업로드
           uploadArtifacts: true
           # 임시 공개 저장소 사용 (결과를 공유 가능한 URL로 제공)

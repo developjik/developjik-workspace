@@ -72,6 +72,9 @@ jobs:
       # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # 모든 히스토리를 가져옴 (Turborepo 캐싱 최적화)
+          fetch-depth: 0
 
       # pnpm 설정
       - name: Setup pnpm
@@ -99,7 +102,7 @@ jobs:
   build:
     name: Build Applications
     runs-on: ubuntu-latest
-    # 린트와 타입 체크가 성공한 후에만 실행
+    # 코드 품질 검증 후에만 실행 (테스트는 병렬 실행)
     needs: [lint-and-typecheck]
     # 매트릭스 전략: 여러 앱을 병렬로 빌드
     strategy:
@@ -110,6 +113,9 @@ jobs:
       # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # 모든 히스토리를 가져옴 (Turborepo 캐싱 최적화)
+          fetch-depth: 0
 
       # pnpm 설정
       - name: Setup pnpm
@@ -155,6 +161,9 @@ jobs:
       # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # 모든 히스토리를 가져옴 (Turborepo 캐싱 최적화)
+          fetch-depth: 0
 
       # pnpm 설정
       - name: Setup pnpm
@@ -177,7 +186,7 @@ jobs:
       - name: Skip E2E tests for now
         run: echo "E2E tests skipped - will be implemented later"
 
-  # 5. 보안 검사 작업
+  # 5. 보안 검사 작업 (다른 작업과 병렬 실행)
   security-scan:
     name: Security Scan
     runs-on: ubuntu-latest
@@ -185,18 +194,23 @@ jobs:
       # 소스 코드 체크아웃
       - name: Checkout
         uses: actions/checkout@v4
-
-      # Node.js 설정 (보안 스캔용)
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          # 모든 히스토리를 가져옴 (Turborepo 캐싱 최적화)
+          fetch-depth: 0
 
       # pnpm 설정
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.0.0
+
+      # Node.js 설정 (보안 스캔용)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          # pnpm 의존성 캐싱 활성화
+          cache: 'pnpm'
 
       # 의존성 설치
       - name: Install dependencies
