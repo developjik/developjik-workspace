@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussion
+    url: https://github.com/developjik/developjik-workspace/discussions
+    about: 질문이나 아이디어에 대해 토론하고 싶으시면 여기서 시작하세요.
+  - name: 📖 Documentation
+    url: https://developjik-workspace-docusaurus-developjiks-projects.vercel.app
+    about: 프로젝트 문서와 가이드를 확인하세요.

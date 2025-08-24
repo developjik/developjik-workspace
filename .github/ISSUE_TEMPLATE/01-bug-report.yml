@@ -1,0 +1,131 @@
+name: 🐛 Bug Report
+description: 버그나 예상과 다른 동작을 발견했나요? 여기서 신고해 주세요.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+assignees:
+  - developjik
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐛 버그 리포트
+        
+        버그를 신고해 주셔서 감사합니다! 가능한 한 자세히 작성해 주시면 문제를 더 빠르게 해결할 수 있습니다.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "📋 사전 확인사항"
+      description: "버그를 신고하기 전에 다음을 확인해 주세요"
+      options:
+        - label: 최신 버전을 사용하고 있습니다
+          required: true
+        - label: 기존 이슈에서 동일한 문제가 없는지 확인했습니다
+          required: true
+        - label: 문제를 재현할 수 있는 최소한의 예제를 준비했습니다
+          required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: "🔍 버그 설명"
+      description: "발생한 문제에 대해 명확하고 간결하게 설명해 주세요."
+      placeholder: "어떤 문제가 발생했나요?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "🔄 재현 단계"
+      description: "버그를 재현하기 위한 단계를 설명해 주세요."
+      placeholder: |
+        1. '...'로 이동
+        2. '...' 클릭
+        3. '...'까지 스크롤
+        4. 오류 확인
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "✅ 예상 동작"
+      description: "어떤 동작을 예상했나요?"
+      placeholder: "정상적으로 작동한다면 어떻게 되어야 하는지 설명해 주세요."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: "❌ 실제 동작"
+      description: "실제로 어떤 일이 일어났나요?"
+      placeholder: "실제로 발생한 동작을 설명해 주세요."
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "📷 스크린샷/동영상"
+      description: "문제를 설명하는 스크린샷이나 동영상이 있다면 첨부해 주세요."
+      placeholder: "이미지나 동영상을 여기에 드래그하거나 붙여넣기 하세요."
+
+  - type: input
+    id: browser
+    attributes:
+      label: "🌐 브라우저"
+      description: "사용 중인 브라우저와 버전을 알려주세요."
+      placeholder: "예: Chrome 120.0.6099.109"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: "💻 운영체제"
+      description: "사용 중인 운영체제를 알려주세요."
+      placeholder: "예: macOS 14.2.1, Windows 11, Ubuntu 22.04"
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: "🟢 Node.js 버전"
+      description: "사용 중인 Node.js 버전을 알려주세요."
+      placeholder: "예: v20.10.0"
+
+  - type: input
+    id: package-manager
+    attributes:
+      label: "📦 패키지 매니저"
+      description: "사용 중인 패키지 매니저와 버전을 알려주세요."
+      placeholder: "예: pnpm 8.14.0, npm 10.2.3, yarn 1.22.19"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "📝 추가 정보"
+      description: "버그와 관련된 추가적인 정보나 맥락이 있다면 공유해 주세요."
+      placeholder: "추가로 전달하고 싶은 내용이 있나요?"
+
+  - type: textarea
+    id: minimal-reproduction
+    attributes:
+      label: "🔬 최소 재현 예제"
+      description: "문제를 재현할 수 있는 최소한의 코드나 설정을 제공해 주세요."
+      placeholder: |
+        ```javascript
+        // 문제를 재현하는 최소한의 코드
+        ```
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: "🤝 기여 의사"
+      description: "이 문제를 해결하는 데 도움을 주실 의향이 있나요?"
+      options:
+        - label: 이 문제를 해결하는 PR을 작성할 의향이 있습니다
+        - label: 문제 해결을 위한 테스트나 검증을 도울 수 있습니다

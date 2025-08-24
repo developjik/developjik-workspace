@@ -1,0 +1,188 @@
+name: ⚡ Performance Issue
+description: 성능 문제나 최적화 제안을 신고해 주세요.
+title: "[Performance]: "
+labels: ["performance", "needs-investigation"]
+assignees:
+  - developjik
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ⚡ 성능 문제
+        
+        성능 개선에 도움이 될 정보를 제공해 주셔서 감사합니다!
+
+  - type: dropdown
+    id: performance-category
+    attributes:
+      label: "📊 성능 카테고리"
+      description: "어떤 종류의 성능 문제인가요?"
+      options:
+        - "🚀 페이지 로딩 속도"
+        - "🎨 렌더링 성능"
+        - "💾 메모리 사용량"
+        - "🔄 JavaScript 실행 시간"
+        - "📱 모바일 성능"
+        - "🌐 네트워크 최적화"
+        - "📦 번들 크기"
+        - "🔍 SEO 관련"
+        - "♿ 접근성 성능"
+        - "🛠️ 빌드/개발 서버 속도"
+    validations:
+      required: true
+
+  - type: textarea
+    id: performance-description
+    attributes:
+      label: "🔍 성능 문제 설명"
+      description: "어떤 성능 문제를 경험했나요?"
+      placeholder: |
+        예시:
+        - 페이지 로딩이 3초 이상 걸림
+        - 스크롤 시 끊김 현상 발생
+        - 메모리 사용량이 계속 증가함
+        - 빌드 시간이 너무 오래 걸림
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: "🔄 재현 방법"
+      description: "성능 문제를 재현하는 방법을 알려주세요."
+      placeholder: |
+        1. '...' 페이지로 이동
+        2. '...' 동작 수행
+        3. 개발자 도구에서 성능 측정
+        4. 문제 확인
+    validations:
+      required: true
+
+  - type: textarea
+    id: performance-metrics
+    attributes:
+      label: "📈 성능 지표"
+      description: "측정된 성능 데이터를 제공해 주세요."
+      placeholder: |
+        예시:
+        - Lighthouse 점수: Performance 45/100
+        - First Contentful Paint: 3.2s
+        - Largest Contentful Paint: 5.8s
+        - Time to Interactive: 7.1s
+        - 메모리 사용량: 150MB → 350MB (증가)
+        - 번들 크기: 2.3MB gzipped
+        
+        Performance 탭, Lighthouse, 또는 다른 도구의 결과를 첨부해 주세요.
+
+  - type: input
+    id: device-specs
+    attributes:
+      label: "💻 테스트 환경"
+      description: "테스트한 디바이스나 환경을 알려주세요."
+      placeholder: "예: MacBook Pro M1, iPhone 12, Chrome 120 on Windows 11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: network-condition
+    attributes:
+      label: "🌐 네트워크 상태"
+      description: "테스트 시 네트워크 상태는 어떠했나요?"
+      options:
+        - "🚄 빠른 3G (1.6 Mbps)"
+        - "🚗 일반 3G (750 Kbps)"
+        - "🚶 느린 3G (400 Kbps)"
+        - "📶 4G/LTE"
+        - "💨 고속 Wi-Fi"
+        - "🏠 일반 Wi-Fi"
+        - "📱 모바일 데이터"
+        - "❓ 기타/확실하지 않음"
+
+  - type: textarea
+    id: expected-performance
+    attributes:
+      label: "✅ 예상 성능"
+      description: "어떤 성능을 기대했나요?"
+      placeholder: |
+        예시:
+        - 페이지 로딩이 2초 이내에 완료되어야 함
+        - 스무스한 60fps 애니메이션
+        - 메모리 사용량이 안정적으로 유지되어야 함
+        - Lighthouse 성능 점수 90+ 달성
+    validations:
+      required: true
+
+  - type: textarea
+    id: performance-analysis
+    attributes:
+      label: "🔬 성능 분석"
+      description: "성능 문제의 원인을 분석해 보셨다면 공유해 주세요."
+      placeholder: |
+        예시:
+        - 큰 이미지 파일이 최적화되지 않음
+        - JavaScript 번들이 너무 큼
+        - 불필요한 API 호출이 발생
+        - React 컴포넌트 재렌더링이 과도함
+        - CSS 애니메이션이 GPU 가속을 사용하지 않음
+
+  - type: textarea
+    id: potential-solutions
+    attributes:
+      label: "💡 제안하는 해결책"
+      description: "성능 개선을 위한 아이디어가 있다면 공유해 주세요."
+      placeholder: |
+        예시:
+        - 이미지 최적화 및 WebP 형식 사용
+        - 코드 스플리팅 적용
+        - 메모이제이션 추가
+        - 가상 스크롤링 구현
+        - Service Worker를 이용한 캐싱
+
+  - type: dropdown
+    id: performance-impact
+    attributes:
+      label: "⚠️ 영향도"
+      description: "이 성능 문제가 사용자에게 미치는 영향은 어느 정도인가요?"
+      options:
+        - "🔴 심각함 - 사용이 거의 불가능"
+        - "🟠 높음 - 사용자 경험에 큰 지장"
+        - "🟡 보통 - 불편하지만 사용 가능"
+        - "🟢 낮음 - 미세한 개선사항"
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "📷 스크린샷/성능 프로파일"
+      description: "Performance 탭 스크린샷이나 Lighthouse 결과를 첨부해 주세요."
+      placeholder: "개발자 도구의 Performance, Network, Lighthouse 결과를 첨부하면 문제 분석에 큰 도움이 됩니다."
+
+  - type: input
+    id: related-issues
+    attributes:
+      label: "🔗 관련 이슈"
+      description: "관련된 이슈나 PR이 있다면 번호를 적어주세요."
+      placeholder: "예: #123, #456"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "📝 추가 정보"
+      description: "성능 문제와 관련된 추가적인 정보가 있다면 공유해 주세요."
+      placeholder: |
+        - 다른 디바이스에서의 테스트 결과
+        - 경쟁 사이트와의 비교
+        - 시간대별 성능 변화
+        - 특정 조건에서만 발생하는지 여부
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: "🤝 기여 의사"
+      description: "성능 개선에 직접 기여하실 의향이 있나요?"
+      options:
+        - label: 성능 최적화 PR을 작성할 수 있습니다
+        - label: 추가적인 성능 테스트를 도울 수 있습니다
+        - label: 성능 모니터링 도구 설정을 도울 수 있습니다
+        - label: 다양한 디바이스에서 테스트를 도울 수 있습니다

@@ -1,0 +1,140 @@
+name: 📚 Documentation
+description: 문서 개선이나 수정이 필요한 부분을 알려주세요.
+title: "[Docs]: "
+labels: ["documentation", "good first issue"]
+assignees:
+  - developjik
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 문서 개선
+        
+        더 나은 문서를 위한 제안이나 수정사항을 알려주셔서 감사합니다!
+
+  - type: dropdown
+    id: doc-type
+    attributes:
+      label: "📝 문서 유형"
+      description: "어떤 종류의 문서와 관련된 것인가요?"
+      options:
+        - "🏠 README"
+        - "📖 API 문서"
+        - "🚀 시작하기 가이드"
+        - "🔧 개발 환경 설정"
+        - "📋 기여 가이드"
+        - "❓ FAQ"
+        - "🎓 튜토리얼"
+        - "📝 블로그 포스트"
+        - "🔗 기타"
+    validations:
+      required: true
+
+  - type: input
+    id: doc-url
+    attributes:
+      label: "🔗 관련 문서 URL"
+      description: "개선이 필요한 문서의 URL을 입력해 주세요."
+      placeholder: "https://developjik-workspace-docusaurus-developjiks-projects.vercel.app/docs/..."
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: "🎯 문제 유형"
+      description: "어떤 종류의 문제인가요?"
+      options:
+        - "❌ 오탈자/맞춤법 오류"
+        - "📊 부정확한 정보"
+        - "📝 누락된 정보"
+        - "🔄 업데이트 필요"
+        - "🎨 포맷팅/레이아웃 개선"
+        - "🔗 깨진 링크"
+        - "📱 모바일 호환성"
+        - "♿ 접근성 개선"
+        - "🌍 다국어 지원"
+        - "➕ 새로운 문서 추가"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: "📄 현재 내용"
+      description: "문제가 있는 현재 내용을 복사해 주세요."
+      placeholder: |
+        현재 문서에 있는 내용을 여기에 붙여넣어 주세요.
+        (해당하는 경우)
+
+  - type: textarea
+    id: suggested-content
+    attributes:
+      label: "✏️ 제안하는 내용"
+      description: "어떻게 개선되어야 한다고 생각하시나요?"
+      placeholder: |
+        개선된 내용이나 추가되어야 할 내용을 작성해 주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: "🤔 개선 이유"
+      description: "왜 이런 변경이 필요한지 설명해 주세요."
+      placeholder: |
+        - 현재 문서의 문제점
+        - 개선이 사용자에게 주는 이점
+        - 더 나은 사용자 경험을 위한 근거
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "🎯 우선순위"
+      description: "이 문서 개선의 중요도를 평가해 주세요"
+      options:
+        - "🔥 높음 - 사용자가 프로젝트를 사용하는 데 중요함"
+        - "⚡ 중간 - 사용자 경험 개선에 도움됨"
+        - "💭 낮음 - 있으면 좋을 개선사항"
+    validations:
+      required: true
+
+  - type: textarea
+    id: target-audience
+    attributes:
+      label: "👥 대상 사용자"
+      description: "이 문서를 주로 읽을 사용자는 누구인가요?"
+      placeholder: |
+        예시:
+        - 초보자 개발자
+        - 숙련된 React 개발자
+        - 프로젝트 기여자
+        - 문서 작성자
+
+  - type: input
+    id: related-issues
+    attributes:
+      label: "🔗 관련 이슈"
+      description: "관련된 이슈나 PR이 있다면 번호를 적어주세요."
+      placeholder: "예: #123, #456"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "📝 추가 정보"
+      description: "문서 개선과 관련된 추가적인 정보가 있다면 공유해 주세요."
+      placeholder: |
+        - 참고할 만한 다른 프로젝트의 문서
+        - 스크린샷이나 예시
+        - 기타 고려사항
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: "🤝 기여 의사"
+      description: "이 문서 개선에 직접 기여하실 의향이 있나요?"
+      options:
+        - label: 이 문서를 직접 작성하거나 수정할 수 있습니다
+        - label: 내용 검토나 피드백을 제공할 수 있습니다
+        - label: 번역이나 다국어 지원을 도울 수 있습니다
+        - label: 스크린샷이나 예시 이미지를 제공할 수 있습니다

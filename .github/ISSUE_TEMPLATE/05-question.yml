@@ -1,0 +1,158 @@
+name: ❓ Question
+description: 프로젝트 사용에 대한 질문이나 도움이 필요하시나요?
+title: "[Question]: "
+labels: ["question", "help wanted"]
+assignees:
+  - developjik
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ❓ 질문하기
+        
+        질문해 주셔서 감사합니다! 최대한 빠르고 정확한 답변을 드리겠습니다.
+        
+        > 💡 **팁**: 복잡한 기술적 토론이나 아이디어 논의는 [Discussions](https://github.com/developjik/developjik-workspace/discussions)에서 진행하는 것이 더 좋을 수 있습니다.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "📋 사전 확인사항"
+      description: "질문하기 전에 다음을 확인해 주세요"
+      options:
+        - label: 문서를 확인했지만 답을 찾지 못했습니다
+          required: true
+        - label: 기존 이슈나 토론에서 유사한 질문을 찾아봤습니다
+          required: true
+        - label: Google이나 Stack Overflow에서 검색해 봤습니다
+          required: true
+
+  - type: dropdown
+    id: question-category
+    attributes:
+      label: "🏷️ 질문 카테고리"
+      description: "어떤 종류의 질문인가요?"
+      options:
+        - "🚀 시작하기/설치"
+        - "⚙️ 설정 및 구성"
+        - "💻 개발 환경"
+        - "📚 사용법/API"
+        - "🔧 문제 해결"
+        - "🎨 커스터마이징"
+        - "📦 배포/운영"
+        - "🤝 기여 방법"
+        - "🏗️ 아키텍처/설계"
+        - "🔄 마이그레이션"
+        - "🌟 베스트 프랙티스"
+        - "🔗 기타"
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: "❓ 질문 내용"
+      description: "구체적으로 무엇이 궁금한지 작성해 주세요."
+      placeholder: |
+        명확하고 구체적인 질문을 작성해 주세요.
+        
+        좋은 질문 예시:
+        - "React 19와 함께 사용할 때 X 기능이 작동하지 않는데, Y 방법으로 해결할 수 있나요?"
+        - "Docusaurus에서 커스텀 테마를 적용하려면 어떤 파일들을 수정해야 하나요?"
+        - "monorepo 환경에서 패키지 간 의존성을 어떻게 관리하는 것이 좋을까요?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: "🔍 상황 설명"
+      description: "질문과 관련된 배경이나 상황을 설명해 주세요."
+      placeholder: |
+        예시:
+        - 무엇을 하려고 했는지
+        - 어떤 문제에 직면했는지  
+        - 현재까지 시도해 본 방법들
+        - 사용 중인 기술 스택이나 환경
+
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: "🔄 시도해 본 것들"
+      description: "이미 시도해 본 방법이나 찾아본 자료가 있다면 알려주세요."
+      placeholder: |
+        예시:
+        - 문서의 X 섹션을 읽어봤습니다
+        - Y 방법을 시도했지만 Z 오류가 발생했습니다
+        - 다른 프로젝트에서는 A 방식을 사용하는 것을 봤습니다
+        - Stack Overflow의 B 답변을 참고했지만 적용되지 않았습니다
+
+  - type: textarea
+    id: code-example
+    attributes:
+      label: "💻 관련 코드"
+      description: "질문과 관련된 코드가 있다면 공유해 주세요."
+      placeholder: |
+        ```javascript
+        // 문제가 발생하는 코드나 시도해 본 코드를 여기에 작성해 주세요
+        ```
+
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: "🎯 기대하는 결과"
+      description: "어떤 결과를 원하시나요?"
+      placeholder: |
+        예시:
+        - X 기능이 Y 방식으로 작동하기를 원합니다
+        - Z 오류 없이 정상적으로 실행되기를 원합니다
+        - A 방법으로 B를 구현하고 싶습니다
+
+  - type: input
+    id: environment
+    attributes:
+      label: "💻 개발 환경"
+      description: "사용 중인 환경을 알려주세요."
+      placeholder: "예: Node.js v20.10.0, pnpm 8.14.0, React 19, macOS 14.2"
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "⏰ 긴급도"
+      description: "이 질문이 얼마나 급한가요?"
+      options:
+        - "🔥 긴급함 - 작업이 막혀있음"
+        - "⚡ 중간 - 빠른 답변이 필요함"
+        - "💭 낮음 - 시간이 있을 때 답변해 주시면 됩니다"
+    validations:
+      required: true
+
+  - type: input
+    id: related-links
+    attributes:
+      label: "🔗 관련 링크"
+      description: "관련된 문서, 이슈, 또는 참고 자료가 있다면 공유해 주세요."
+      placeholder: "예: https://example.com, #123, stackoverflow.com/questions/..."
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: "📝 추가 정보"
+      description: "질문과 관련된 추가적인 정보가 있다면 공유해 주세요."
+      placeholder: |
+        예시:
+        - 스크린샷이나 에러 로그
+        - 비슷한 다른 프로젝트의 예시
+        - 시도해 본 다른 방법들의 결과
+        - 제약 사항이나 특별한 요구사항
+
+  - type: checkboxes
+    id: follow-up
+    attributes:
+      label: "🔄 후속 조치"
+      description: "답변을 받은 후 어떻게 하실 계획인가요?"
+      options:
+        - label: 해결책을 적용한 후 결과를 공유하겠습니다
+        - label: 문제가 해결되면 문서 개선에 기여하고 싶습니다
+        - label: 비슷한 문제를 겪는 다른 사용자들을 도울 수 있습니다
+        - label: 이 답변을 바탕으로 블로그 포스트나 튜토리얼을 작성할 수 있습니다
