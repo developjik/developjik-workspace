@@ -13,38 +13,59 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
  Create as many sidebars as you want.
  */
 const sidebars: SidebarsConfig = {
-  // Main documentation sidebar
+  // Main documentation sidebar - Personal Portfolio Structure
   tutorialSidebar: [
     'intro',
     {
       type: 'category',
-      label: '📖 학습 노트',
+      label: '📖 학습 & 연구',
+      collapsed: false,
       items: [
-        'learning/react-19-deep-dive',
-        'learning/typescript-advanced-patterns',
-        'learning/nextjs-15-performance-optimization',
+      
+        'study/react-19-deep-dive',
+        'study/nextjs-15-performance-optimization',
+        'study/typescript-advanced-patterns',
+        'study/react-suspense-advanced-guide' 
       ],
     },
     {
       type: 'category',
-      label: '🚀 프로젝트',
+      label: '🏗️ 실무 적용기',
+      collapsed: false,
       items: [
-        'projects/modern-react-lab',
+        'production-stories/performance-improvement-case',
       ],
     },
     {
       type: 'category',
-      label: '📋 코드 스니펫',
+      label: '🚀 개인 프로젝트 & 실험',
       items: [
-        'snippets/custom-hooks-collection',
-        'snippets/utility-functions',
+        'personal-projects/modern-react-lab',
       ],
     },
     {
       type: 'category',
-      label: '📝 튜토리얼',
+      label: '💡 트러블슈팅 기록',
       items: [
-        'tutorials/turborepo-setup-guide',
+        'troubleshooting/memory-leak-debugging',
+      ],
+    },
+    {
+      type: 'category',
+      label: '📋 개인 레퍼런스',
+      collapsed: true,
+      items: [
+        'reference/react-cheatsheet',
+        'reference/typescript-cheatsheet',
+        'reference/suspense-cheatsheet',
+        {
+          type: 'category',
+          label: '코드 스니펫',
+          items: [
+            'reference/custom-hooks-collection',
+            'reference/utility-functions',
+          ],
+        },
       ],
     },
   ],

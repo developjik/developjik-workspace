@@ -1,4 +1,24 @@
-# React 19 심화 학습 🚀
+---
+title: "React 19 심화 학습"
+description: "React 19의 새로운 기능들과 실무 활용법을 깊이 있게 학습합니다"
+tags: [React, React 19, Concurrent Features, Server Components, Actions]
+keywords: [React 19, useActionState, Server Components, Concurrent Rendering, React Compiler]
+last_update:
+  date: 2024-08-24
+  author: developjik
+---
+
+# React 19 심화 학습
+
+:::tip 학습 목표
+React 19의 혁신적인 기능들을 이해하고 실무 프로젝트에 적용할 수 있습니다.
+:::
+
+## 🎯 학습 개요
+
+**학습 시간**: 약 45분  
+**난이도**: 고급  
+**사전 지식**: React 18, TypeScript, 비동기 프로그래밍
 
 React 19의 핵심 기능들을 깊이 있게 탐구하고 실제 사용 사례를 정리합니다.
 

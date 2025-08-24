@@ -28,7 +28,7 @@ export const projects: Project[] = [
     startDate: '2024-01',
     githubUrl: 'https://github.com/developjik/modern-react-nextjs-lab',
     demoUrl: 'https://modern-react-lab.vercel.app',
-    documentUrl: '/docs/projects/modern-react-lab',
+    documentUrl: '/docs/personal-projects/modern-react-lab',
     highlights: [
       'React 19의 Actions와 use() hook 실전 적용',
       'Turborepo를 활용한 효율적인 모노레포 구축',
