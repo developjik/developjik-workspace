@@ -22,7 +22,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
       
-        'study/react-19-deep-dive',
+        'study/react-19-advanced-guide',
         'study/nextjs-15-performance-optimization',
         'study/typescript-advanced-patterns',
         'study/react-suspense-advanced-guide' 

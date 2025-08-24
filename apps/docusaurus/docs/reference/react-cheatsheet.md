@@ -971,6 +971,6 @@ function ExampleUsage() {
 
 ## 🔗 관련 문서
 
-- [React 19 새 기능](/docs/study/react-19-deep-dive)
+- [React 19 새 기능](/docs/study/react-19-advanced-guide)
 - [TypeScript 고급 패턴](/docs/study/typescript-advanced-patterns)
 - [React Suspense 고급 가이드](/docs/study/react-suspense-advanced-guide)

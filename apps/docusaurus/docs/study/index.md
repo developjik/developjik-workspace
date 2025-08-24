@@ -5,7 +5,7 @@
 ## 목록
 
 - [Next.js 15 성능 최적화](./nextjs-15-performance-optimization.md)
-- [React 19 심화 분석](./react-19-deep-dive.md)  
+- [React 19 심화 분석](./react-19-advanced-guide.md)  
 - [TypeScript 고급 패턴](./typescript-advanced-patterns.md)
 
 ---

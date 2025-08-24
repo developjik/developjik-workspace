@@ -15,6 +15,11 @@ const config: Config = {
     experimental_faster: true, // Enable Docusaurus Faster for improved build performance
   },
 
+  // Enable Mermaid diagrams
+  markdown: {
+    mermaid: true,
+  },
+
   // Set the production url of your site here
   url: 'https://developjik-workspace-docusaurus-developjiks-projects.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -69,6 +74,13 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  themes: ['@docusaurus/theme-mermaid'],
+
+  // Enable Mermaid diagrams
+  markdown: {
+    mermaid: true,
+  },
 
   plugins: [],
 
@@ -158,6 +170,9 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+    mermaid: {
+      theme: {light: 'neutral', dark: 'dark'},
     },
   } satisfies Preset.ThemeConfig,
 };
