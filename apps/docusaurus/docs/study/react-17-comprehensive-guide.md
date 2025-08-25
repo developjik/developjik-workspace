@@ -89,7 +89,20 @@ function HybridApp() {
 
 ### Event Delegation System 혁신
 
-React 17의 가장 중요한 변경사항은 **Event Delegation Architecture**의 근본적 개편입니다.
+React 17의 가장 중요한 변경사항은 **Event Delegation Architecture**의 근본적 개편입니다. 이 변경은 단순한 구현 세부사항이 아니라, React의 미래 발전 방향을 결정짓는 전략적 의사결정이었습니다.
+
+**왜 이벤트 시스템을 변경했을까?**
+
+React 16까지는 모든 이벤트를 `document` 레벨에서 처리했습니다. 이는 성능상 효율적이었지만, 여러 심각한 문제를 야기했습니다:
+
+1. **멀티 앱 환경에서의 충돌**: 같은 페이지에 여러 React 앱이 있을 때 이벤트가 서로 간섭
+2. **외부 라이브러리와의 호환성**: jQuery, Angular 등 다른 프레임워크와 이벤트 충돌
+3. **마이크로 프론트엔드 아키텍처의 제약**: 독립적인 앱 개발과 배포에 장애
+4. **점진적 마이그레이션의 어려움**: 전체 앱을 한번에 업그레이드해야 하는 부담
+
+**React 17의 해결 방식**
+
+React 17은 각 React 애플리케이션이 자체 루트 컨테이너에서 이벤트를 관리하도록 변경했습니다. 이는 다음과 같은 아키텍처적 이점을 제공합니다:
 
 ```mermaid
 graph TD
@@ -101,6 +114,15 @@ graph TD
     E --> G[Event Conflicts]
     F --> H[Safe Multi-App Support]
 ```
+
+**기술적 임팩트**
+
+이 변경으로 인해 다음과 같은 실질적인 개선이 이루어졌습니다:
+
+- **격리된 이벤트 처리**: 각 React 앱이 독립적으로 이벤트를 관리하여 상호 간섭 제거
+- **외부 라이브러리 호환성 향상**: jQuery, Vanilla JS 등과 안전하게 공존 가능
+- **마이크로 프론트엔드 지원**: 서로 다른 React 버전의 앱들이 동일 페이지에서 실행 가능
+- **점진적 업그레이드 경로**: 전체 앱을 한번에 업그레이드할 필요 없음
 
 **React 16 Event System:**
 ```javascript
@@ -167,6 +189,26 @@ class React17EventSystem {
 ```
 
 ### JSX Transform Architecture Evolution
+
+React 17의 또 다른 혁신은 **새로운 JSX Transform**의 도입입니다. 이는 개발자 경험을 크게 향상시키고, 빌드 시스템의 최적화를 가능하게 한 중요한 변경사항입니다.
+
+**왜 JSX Transform을 변경했을까?**
+
+기존 JSX Transform은 여러 문제점을 가지고 있었습니다:
+
+1. **불필요한 React Import**: 모든 JSX 파일에서 `import React from 'react'`가 필수
+2. **번들 크기 증가**: React.createElement 호출로 인한 코드 중복
+3. **정적 분석의 한계**: 컴파일 타임 최적화가 어려움
+4. **개발자 경험 저하**: 사용하지 않는 React import에 대한 린트 경고
+
+**새로운 JSX Transform의 혁신**
+
+React 17은 컴파일러가 자동으로 필요한 JSX 런타임을 import하는 방식으로 변경했습니다. 이는 다음과 같은 이점을 제공합니다:
+
+- **자동 Import**: React를 명시적으로 import할 필요 없음
+- **번들 최적화**: Tree-shaking과 코드 압축 개선
+- **정적 분석 향상**: 컴파일 타임 최적화 가능
+- **미래 호환성**: 향후 React 기능과의 더 나은 통합
 
 **Legacy JSX Transform (React 16):**
 ```javascript
