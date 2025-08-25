@@ -1,3 +1,13 @@
+---
+title: "React 17 가이드"
+description: "React 17의 전략적 기반 릴리스부터 이벤트 시스템 혁신까지, 시니어 개발자가 알아야 할 모든 것"
+tags: [React, React 17, Event Delegation, JSX Transform, Fiber Architecture, Migration]
+keywords: [React 17, Event Delegation, JSX Transform, No New Features, Strategic Release, Migration Guide]
+last_update:
+  date: 2025-08-25
+  author: developjik
+---
+
 # React 17: The Strategic Foundation Release - Senior Developer Guide
 
 ## 🎯 기술 개요 및 핵심 가치

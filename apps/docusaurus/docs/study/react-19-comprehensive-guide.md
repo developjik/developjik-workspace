@@ -1,5 +1,5 @@
 ---
-title: "React 19 심화 연구 - 시니어 개발자를 위한 완벽 가이드"
+title: "React 19 가이드"
 description: "React 19의 내부 아키텍처부터 실무 최적화까지, 시니어 개발자가 알아야 할 모든 것"
 tags: [React, React 19, Server Components, React Compiler, Concurrent Features, Performance]
 keywords: [React 19, useActionState, use Hook, Server Actions, React Compiler, Fiber Architecture, Performance Optimization]
@@ -8,7 +8,7 @@ last_update:
   author: developjik
 ---
 
-# React 19 심화 연구 - 시니어 개발자를 위한 완벽 가이드
+# React 19 가이드
 
 :::info 문서 개요
 **Target**: 3+ 년 경력 시니어 React 개발자  

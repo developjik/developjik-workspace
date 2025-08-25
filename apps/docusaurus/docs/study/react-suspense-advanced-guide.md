@@ -1,3 +1,13 @@
+---
+title: "React Suspense 고급 가이드"
+description: "React Suspense의 선언적 비동기 UI부터 내부 동작 원리까지, 시니어 개발자가 알아야 할 모든 것"
+tags: [React, Suspense, Async UI, Error Boundaries, Fiber Architecture]
+keywords: [React Suspense, Declarative UI, Promise Throwing, Error Boundaries, use Hook, Server Components]
+last_update:
+  date: 2025-08-25
+  author: developjik
+---
+
 # React Suspense: Advanced Guide for Senior Developers
 
 ## 🎯 기술 개요 및 핵심 가치

@@ -1,5 +1,5 @@
 ---
-title: "React 18 종합 가이드 - 시니어 개발자를 위한 동시성 완벽 분석"
+title: "React 18 가이드"
 description: "React 18의 Concurrent Features부터 실무 최적화까지, 시니어 개발자가 알아야 할 모든 것"
 tags: [React, React 18, Concurrent Rendering, Performance, Hooks, Fiber Architecture]
 keywords: [React 18, useTransition, useDeferredValue, Suspense, Automatic Batching, Concurrent Features, Time Slicing]
@@ -8,7 +8,7 @@ last_update:
   author: developjik
 ---
 
-# React 18 종합 가이드 - 시니어 개발자를 위한 동시성 완벽 분석
+# React 18 가이드
 
 :::info 문서 개요
 **Target**: 3+ 년 경력 시니어 React 개발자  
