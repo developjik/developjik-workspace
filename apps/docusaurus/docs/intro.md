@@ -9,7 +9,7 @@
 ## 🚀 개발자 여정 둘러보기
 
 ### 📖 새로운 지식을 탐구하고 있어요
-- **[React 19 새 기능 연구](/docs/study/react-19-advanced-guide)** - Server Actions, Concurrent Features 심화 분석
+- **[React 19 새 기능 연구](/docs/study/react-19-comprehensive-guide)** - Server Actions, Concurrent Features 심화 분석
 - **[TypeScript 고급 패턴 마스터](/docs/study/typescript-advanced-patterns)** - 실무에서 활용하는 고급 타입 시스템
 - **[Next.js 15 성능 최적화](/docs/study/nextjs-15-performance-optimization)** - 최신 최적화 기법들
 

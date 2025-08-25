@@ -352,6 +352,6 @@ export function useIntersectionObserver(
 
 ## 🔗 관련 자료
 
-- [React 19 Deep Dive](/docs/study/react-19-advanced-guide)
+- [React 19 Deep Dive](/docs/study/react-19-comprehensive-guide)
 - [React 치트시트](/docs/reference/react-cheatsheet)
 - [성능 최적화 사례](/docs/production-stories/performance-improvement-case)

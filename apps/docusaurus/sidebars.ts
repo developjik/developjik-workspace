@@ -21,8 +21,9 @@ const sidebars: SidebarsConfig = {
       label: '📖 학습 & 연구',
       collapsed: false,
       items: [
-      
-        'study/react-19-advanced-guide',
+        'study/react-17-comprehensive-guide',
+        'study/react-18-comprehensive-guide',
+        'study/react-19-comprehensive-guide',
         'study/nextjs-15-performance-optimization',
         'study/typescript-advanced-patterns',
         'study/react-suspense-advanced-guide' 
