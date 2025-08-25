@@ -77,11 +77,6 @@ const config: Config = {
 
   themes: ['@docusaurus/theme-mermaid'],
 
-  // Enable Mermaid diagrams
-  markdown: {
-    mermaid: true,
-  },
-
   plugins: [],
 
   themeConfig: {
